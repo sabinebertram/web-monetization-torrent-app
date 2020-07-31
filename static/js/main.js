@@ -1,6 +1,7 @@
 const WebTorrent = require('webtorrent')
 const magnetURI = require('magnet-uri')
 const fetch = require('node-fetch')
+const config = require('./config.js')
 
 const client = new WebTorrent()
 
@@ -77,7 +78,7 @@ Vue.component('seed', {
         let info = {
           name: this.name ? `${this.name}.${this.extension}` : file.name, 
           private: true, 
-          announce: 'ws://localhost:8000', 
+          announce: config.tracker, 
           paymentRequired: true, 
           license: {
             paymentPointer: this.paymentPointer, 

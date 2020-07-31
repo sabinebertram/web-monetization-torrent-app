@@ -3,15 +3,23 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "build": "browserify js/main.js -o build/bundle.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:js": "browserify static/js/main.js -o build/bundle.js",
+    "css:concat": "cat static/css/*.css > static/css/bundle.css",
+    "css:minify": "cleancss static/css/bundle.css -o build/bundle.min.css  && rm static/css/bundle.css",
+    "build:css": "npm run css:concat && npm run css:minify",
+    "build": "npm run build:js && npm run build:css && copyfiles index.html build"
   },
   "dependencies": {
-    "browserify": "16.5.1",
     "node-fetch": "^2.6.0",
     "magnet-uri": "file:../magnet-uri",
     "webtorrent": "file:../webtorrent"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "16.5.1",
+    "clean-css-cli": "^4.3.0",
+    "concat-cli": "^4.0.0",
+    "copyfiles": "^2.3.0"
+  }
 }
