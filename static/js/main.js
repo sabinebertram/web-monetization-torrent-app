@@ -115,7 +115,7 @@ Vue.component('seeded', {
   template: `
   <div>
     <p>Your magnet URI is:</p>
-    <p><strong>{{ magnet }}</strong></p>
+    <p style="word-break: break-all;"><strong>{{ magnet }}</strong></p>
   </div>
   `
 })
